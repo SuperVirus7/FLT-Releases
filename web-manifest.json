@@ -1,0 +1,10 @@
+{
+  "webVersion": "3.10.1",
+  "minAppVersion": "3.10.0",
+  "files": {
+    "index.html": "b41a4672f50f98488881bda0cf4835842bf55dd5045cc177b0b90d3e8ecaf73e",
+    "style.css": "f99acdc2e3441e1e583e0f0ac0062b1ad2403a67fa2665e676e5045715f9d808",
+    "script.js": "39a31a434ca09697d9ab867af2f499fabb951b454d9757da456e61782f1a61ba"
+  },
+  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/3.10.1/"
+}
