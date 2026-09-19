@@ -1387,6 +1387,20 @@
                   Run in background (minimize Chrome to taskbar after launch)
                 </label>
               </div>
+              <div class="kac-field">
+                <label class="lbl">Kasada API key</label>
+                <input id="kacKasadaKey" class="inp" type="password" placeholder="cs_..." autocomplete="off" spellcheck="false">
+                <span class="kac-hint" id="kacKasadaHint">CaptchaSolv key — solves Kasada challenges automatically</span>
+              </div>
+              <div class="kac-field kac-field-wide">
+                <label class="lbl">Proxy list <span style="font-weight:400;opacity:.6">(user:pass@host:port, one per line)</span></label>
+                <textarea id="kacProxyList" class="inp" rows="4" placeholder="user:pass@host:port" style="resize:vertical;font-family:monospace;font-size:12px" spellcheck="false"></textarea>
+                <span class="kac-hint" id="kacProxyHint">One proxy per line — rotated across accounts</span>
+                <div style="display:flex;gap:8px;margin-top:6px;align-items:center">
+                  <button id="kacProxyCheckBtn" class="btn xs" type="button">Check Proxies</button>
+                </div>
+                <div id="kacProxyResults" style="display:none;margin-top:6px;max-height:140px;overflow-y:auto;background:rgba(0,0,0,.25);border-radius:6px;padding:6px 8px"></div>
+              </div>
             </div>
           </div>
         </div>
