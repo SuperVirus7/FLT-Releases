@@ -1,10 +1,10 @@
 {
-  "webVersion": "7.0.0",
+  "webVersion": "7.0.1",
   "minAppVersion": "1.0.0",
   "files": {
-    "index.html": "6214e53350feddd7c8e68a92f18ad94cc1aedb60af62654c0eeca2225257e791",
+    "index.html": "5d6cf9b03a8ece735def1946a68a97e72db00a79d22de60ede7a42cfee8cd1cd",
     "style.css": "0baeb785bcea51222601ddd3f5104d953b7d8e1628089eb015596795bf55c84f",
-    "script.js": "77a96710138922caae9e70acef8ec482f0f16a0ada317f190f44a94d825f9aed"
+    "script.js": "456cf0d9ba3835c0e7728da365cbde1924a0b96d61299e1f9244f27866f8ead8"
   },
-  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/7.0.0/"
+  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/7.0.1/"
 }
