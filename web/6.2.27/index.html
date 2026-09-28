@@ -606,29 +606,6 @@
                 <span id="amModeHint"> · manual — locked to your pick</span>
               </div>
             </div>
-            <style>
-              .am-topic-hd{ display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:9px;font-weight:700;letter-spacing:.09em;color:var(--dim);text-transform:uppercase; }
-              .am-mode-seg{ display:flex;background:var(--s2);border:1px solid var(--bd2);border-radius:8px;overflow:hidden;flex-shrink:0; }
-              .am-mode-btn{ font-size:10px;font-weight:700;padding:4px 11px;border:none;background:transparent;color:var(--text2);cursor:pointer;letter-spacing:.5px;transition:background var(--tr),color var(--tr); }
-              .am-mode-btn:hover{ color:var(--text); }
-              .am-mode-btn.active{ background:var(--ac);color:#04140c; }
-              .am-topic-search{ width:100%;box-sizing:border-box;margin-bottom:8px;background:var(--s2);border:1px solid var(--bd2);border-radius:8px;color:var(--text);font-family:inherit;font-size:11px;padding:7px 11px;outline:none;transition:border-color var(--tr); }
-              .am-topic-search:focus{ border-color:var(--ac); }
-              .am-topic-search::placeholder{ color:var(--dim); }
-              .am-topic-grid{ display:flex;flex-wrap:wrap;gap:6px;max-height:156px;overflow-y:auto;padding:2px; }
-              .am-topic-grid::-webkit-scrollbar{ width:4px; }
-              .am-topic-grid::-webkit-scrollbar-thumb{ background:var(--bd2);border-radius:2px; }
-              .am-topic-foot{ font-size:10px;color:var(--dim);margin-top:8px; }
-              .am-topic-btn{
-                font-size:11px;font-weight:600;padding:6px 11px;border-radius:20px;cursor:pointer;
-                background:var(--s2);color:var(--text2);border:1px solid var(--bd2);
-                transition:background var(--tr),border-color var(--tr),color var(--tr);white-space:nowrap;
-              }
-              .am-topic-btn:hover{ background:var(--s3);color:var(--text);border-color:var(--ac); }
-              .am-topic-btn.active{ background:var(--ac-dim);color:var(--text);border-color:var(--ac);box-shadow:inset 0 0 0 1px var(--bd3); }
-              .am-topic-grid.auto .am-topic-btn{ opacity:.55; }
-              .am-topic-grid.auto .am-topic-btn.active{ opacity:1; }
-            </style>
           </div>
         </div>
 
@@ -793,48 +770,65 @@
         <button class="acc-fil fil" data-f="running">Running <b id="fRunning">0</b></button>
       </div>
 
-      <!-- Start All group -->
+      <!-- Start All group — reorganised into two rows -->
       <div class="acc-run-group">
-        <span class="acc-run-label">Interval</span>
-        <input type="number" id="randMin" class="inp acc-interval-inp" value="10" min="1" max="3600" title="Min seconds">
-        <span class="acc-run-sep">&#8211;</span>
-        <input type="number" id="randMax" class="inp acc-interval-inp" value="25" min="1" max="3600" title="Max seconds">
-        <span class="acc-run-sep">s</span>
-        <button class="btn primary acc-start-all-btn" id="startAllBtn">
-          <i class="bi bi-play-fill"></i> Start All
-        </button>
-        <button class="btn danger acc-stop-all-btn" id="stopAllAccBtn" style="display:none">
-          <i class="bi bi-stop-fill"></i> Stop All
-        </button>
-        <button class="btn ghost acc-start-all-btn" id="sendAllOnceBtn" title="Send each account's saved message ONE time — no loop">
-          <i class="bi bi-lightning-charge"></i> Send All Once
-        </button>
-        <button class="btn ghost xs" id="accHealthBtn" title="Validate every token against Kick's API">
-          <i class="bi bi-heart-pulse"></i> Check Health
-        </button>
-        <button class="btn ghost xs" id="accCoinsBtn" title="Fetch Kick Coins balance for all accounts">
-          <i class="bi bi-coin"></i> Check Coins
-        </button>
-        <button class="btn danger xs" id="accCoinsStopBtn" style="display:none" title="Stop coins fetch">
-          <i class="bi bi-stop-fill"></i> Stop
-        </button>
-        <span id="accCoinsProgress" class="acc-health-progress" style="display:none">
-          <span id="accCoinsText">0 / 0</span>
-          <span class="acc-health-bar"><span id="accCoinsFill"></span></span>
-        </span>
-        <button class="btn danger xs" id="accHealthStopBtn" style="display:none" title="Stop the in-progress health scan">
-          <i class="bi bi-stop-fill"></i> Stop Check
-        </button>
-        <button class="btn ghost xs" id="accReloginBtn" title="Re-login dead/expired accounts (same-domain email + known password) to mint fresh tokens">
-          <i class="bi bi-arrow-repeat"></i> Re-login Dead
-        </button>
-        <button class="btn danger xs" id="accReloginStopBtn" style="display:none" title="Stop re-login">
-          <i class="bi bi-stop-fill"></i> Stop Re-login
-        </button>
-        <span id="accHealthProgress" class="acc-health-progress" style="display:none">
-          <span id="accHealthText">0 / 0</span>
-          <span class="acc-health-bar"><span id="accHealthFill"></span></span>
-        </span>
+        <!-- Row 1: primary send controls -->
+        <div class="acc-run-row-primary">
+          <div class="acc-interval-group">
+            <span class="acc-run-label">Interval</span>
+            <input type="number" id="randMin" class="inp acc-interval-inp" value="10" min="1" max="3600" title="Min seconds">
+            <span class="acc-run-sep">&#8211;</span>
+            <input type="number" id="randMax" class="inp acc-interval-inp" value="25" min="1" max="3600" title="Max seconds">
+            <span class="acc-run-sep">s</span>
+          </div>
+          <div class="acc-run-sep-v"></div>
+          <button class="btn primary" id="startAllBtn">
+            <i class="bi bi-play-fill"></i> Start All
+          </button>
+          <button class="btn danger" id="stopAllAccBtn" style="display:none">
+            <i class="bi bi-stop-fill"></i> Stop All
+          </button>
+          <button class="btn ghost" id="sendAllOnceBtn" title="Send each account's saved message ONE time — no loop">
+            <i class="bi bi-lightning-charge"></i> Send All Once
+          </button>
+        </div>
+        <!-- Row 2: utility tools grouped logically -->
+        <div class="acc-run-row-tools">
+          <div class="acc-tool-group">
+            <button class="btn ghost xs" id="accHealthBtn" title="Validate every token against Kick's API">
+              <i class="bi bi-heart-pulse"></i> Health Check
+            </button>
+            <button class="btn danger xs" id="accHealthStopBtn" style="display:none" title="Stop the health scan">
+              <i class="bi bi-stop-fill"></i> Stop
+            </button>
+            <span id="accHealthProgress" class="acc-health-progress" style="display:none">
+              <span id="accHealthText">0 / 0</span>
+              <span class="acc-health-bar"><span id="accHealthFill"></span></span>
+            </span>
+          </div>
+          <div class="acc-run-sep-v"></div>
+          <div class="acc-tool-group">
+            <button class="btn ghost xs" id="accCoinsBtn" title="Fetch Kick Coins balance for all accounts">
+              <i class="bi bi-coin"></i> Check Coins
+            </button>
+            <button class="btn danger xs" id="accCoinsStopBtn" style="display:none" title="Stop coins fetch">
+              <i class="bi bi-stop-fill"></i> Stop
+            </button>
+            <span id="accCoinsProgress" class="acc-health-progress" style="display:none">
+              <span id="accCoinsText">0 / 0</span>
+              <span class="acc-health-bar"><span id="accCoinsFill"></span></span>
+            </span>
+          </div>
+          <div class="acc-run-sep-v"></div>
+          <div class="acc-tool-group">
+            <button class="btn ghost xs" id="accReloginBtn" title="Re-login dead/expired accounts to mint fresh tokens">
+              <i class="bi bi-arrow-repeat"></i> Re-login Dead
+            </button>
+            <button class="btn danger xs" id="accReloginStopBtn" style="display:none" title="Stop re-login">
+              <i class="bi bi-stop-fill"></i> Stop
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Selection actions (shown when rows selected) -->
@@ -940,6 +934,11 @@
         </button>
         <button class="ms-tab" id="msTabBulk" data-mode="bulk">
           <i class="bi bi-chat-left-text-fill"></i> Bulk Messages
+        </button>
+        <button class="ms-tab" id="msTabCreator" data-mode="creator"
+                onclick="window.switchTab&&window.switchTab('automation')" title="Open Account Creator in Automation">
+          <i class="bi bi-person-plus-fill"></i> Account Creator
+          <span class="ms-tab-chip">AUTO</span>
         </button>
       </div>
 
@@ -1227,7 +1226,7 @@
       </div><!-- /msPanelBulk -->
 
       <!-- ══════════════════════════════════════
-           KICK ACCOUNT CREATOR MODE
+           KICK ACCOUNT CREATOR ENGINE (lives in Automation page via mountCreatorInAutomation)
            Auto-registers Kick accounts using mail.tm + visible Chromium
       ══════════════════════════════════════ -->
       <div id="msPanelCreator" style="display:none">
@@ -1453,109 +1452,6 @@
          the streamer's Kick chat with staggered delay so it doesn't look
          like a spam burst.
     ══════════════════════════════════════════════════════════════════ -->
-    <style>
-      .bh-card { padding: 18px 20px; margin-top: 12px; }
-      .bh-hd {
-        display:flex; gap:12px; align-items:center; margin-bottom:14px;
-      }
-      .bh-hd-ic {
-        width:36px; height:36px; border-radius:9px;
-        background:linear-gradient(135deg,#ffb84a,#ff8a4a);
-        color:#0a0f1a; display:flex; align-items:center; justify-content:center;
-        font-size:17px; flex-shrink:0;
-      }
-      .bh-hd-tx h3 { margin:0 0 2px; font-size:15px; font-weight:700; color:#ffb84a; }
-      .bh-hd-tx p  { margin:0; font-size:11.5px; opacity:0.68; line-height:1.4; }
-      .bh-hd-tx code { background:rgba(255,184,74,0.10); color:#ffb84a; padding:1px 5px; border-radius:4px; font-size:11px; }
-
-      .bh-row { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-bottom:10px; }
-      .bh-field { flex:1; min-width:130px; }
-      .bh-field label {
-        display:block; font-size:10.5px; letter-spacing:0.5px;
-        text-transform:uppercase; opacity:0.55; margin-bottom:5px; font-weight:600;
-      }
-      .bh-field input {
-        width:100%; height:34px; padding:0 10px;
-        background:rgba(255,255,255,0.04);
-        border:1px solid rgba(255,255,255,0.08);
-        border-radius:7px; color:inherit; font-size:12.5px;
-        font-family:inherit; transition:border-color .15s ease;
-      }
-      .bh-field input:focus {
-        outline:none; border-color:rgba(255,184,74,0.55);
-        background:rgba(255,184,74,0.04);
-      }
-
-      .bh-actions { display:flex; gap:8px; margin-bottom:10px; align-items:center; }
-      .bh-btn {
-        height:34px; padding:0 14px; border-radius:7px; border:none; cursor:pointer;
-        font-size:12.5px; font-weight:600; letter-spacing:0.2px;
-        font-family:inherit; display:inline-flex; align-items:center; gap:6px;
-        transition:transform .12s ease, box-shadow .15s ease;
-      }
-      .bh-btn:hover:not(:disabled) { transform:translateY(-1px); }
-      .bh-btn-primary {
-        background:linear-gradient(135deg,#ffb84a,#ff8a4a); color:#0a0f1a;
-        box-shadow:0 6px 18px rgba(255,138,74,0.28);
-      }
-      .bh-btn-primary:disabled { opacity:0.40; cursor:not-allowed; transform:none; box-shadow:none; }
-      .bh-btn-ghost {
-        background:rgba(255,255,255,0.04); color:inherit;
-        border:1px solid rgba(255,255,255,0.08);
-      }
-      .bh-btn-ghost:hover { background:rgba(255,255,255,0.07); }
-      .bh-btn-danger {
-        background:rgba(255,80,80,0.12); color:#ff6f6f;
-        border:1px solid rgba(255,80,80,0.30);
-      }
-      .bh-btn-xs { height:26px; padding:0 9px; font-size:11px; }
-
-      .bh-sub {
-        display:flex; align-items:center; gap:8px; padding:8px 12px;
-        background:rgba(255,255,255,0.02); border-radius:6px;
-        font-size:11.5px; margin-bottom:8px;
-      }
-      .bh-sub-count { color:#ffb84a; font-weight:700; }
-
-      .bh-acc-list {
-        max-height:260px; overflow-y:auto; padding:6px;
-        background:rgba(0,0,0,0.15); border-radius:8px;
-        border:1px solid rgba(255,255,255,0.04);
-      }
-      .bh-acc-row {
-        display:grid; grid-template-columns: 24px 1fr auto; gap:10px;
-        align-items:center; padding:6px 10px; border-radius:6px;
-        font-size:12px; cursor:pointer;
-        transition:background .12s ease;
-      }
-      .bh-acc-row:hover { background:rgba(255,255,255,0.03); }
-      .bh-acc-row input[type=checkbox] {
-        margin:0; width:14px; height:14px; cursor:pointer; accent-color:#ffb84a;
-      }
-      .bh-acc-name { font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-      .bh-acc-status {
-        font-size:10px; padding:2px 8px; border-radius:999px;
-        background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.4);
-        font-weight:700; text-transform:uppercase; letter-spacing:0.5px;
-      }
-      .bh-acc-status.ok  { background:rgba(61,255,160,0.12); color:#3dffa0; }
-      .bh-acc-status.err { background:rgba(255,80,80,0.12);  color:#ff6f6f; }
-      .bh-acc-status.run { background:rgba(255,184,74,0.14); color:#ffb84a; }
-
-      .bh-log {
-        font-family:'Consolas','Cascadia Code',monospace; font-size:11.5px;
-        background:rgba(0,0,0,0.28); border-radius:8px; padding:10px 12px;
-        max-height:180px; overflow-y:auto;
-        border:1px solid rgba(255,255,255,0.04);
-        margin-top:10px;
-      }
-      .bh-log-row { padding:1.5px 0; display:flex; gap:8px; line-height:1.4; }
-      .bh-log-time { opacity:0.40; font-size:10.5px; flex-shrink:0; padding-top:1px; }
-      .bh-log-msg.dim  { opacity:0.72; }
-      .bh-log-msg.ok   { color:#3dffa0; }
-      .bh-log-msg.warn { color:#ffb84a; }
-      .bh-log-msg.err  { color:#ff6f6f; }
-    </style>
 
     <div class="card bh-card">
       <div class="bh-hd">
@@ -1628,187 +1524,6 @@
        AUTOMATION — Follow System
   ══════════════════════════════════════════ -->
   <section class="page" id="page-automation">
-    <style>
-      /* ── Automation page styles ── */
-      .auto-page-head {
-        display: flex; align-items: center; justify-content: space-between;
-        margin-bottom: 18px;
-      }
-      .auto-page-head h1 { font-size: 18px; font-weight: 700; color: var(--text); }
-      .auto-page-head p  { font-size: 11px; color: var(--dim); margin-top: 2px; }
-
-      /* Module card */
-      .auto-module {
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        overflow: hidden;
-        margin-bottom: 14px;
-        background: var(--s1, var(--card));
-      }
-
-      /* Module header bar */
-      .auto-mod-hd {
-        display: flex; align-items: center; gap: 10px;
-        padding: 11px 16px; cursor: pointer;
-        border-bottom: 1px solid transparent;
-        transition: background .15s;
-        user-select: none;
-      }
-      .auto-mod-hd:hover { background: var(--s2); }
-      .auto-mod-hd.open  { border-bottom-color: var(--border); }
-
-      .auto-mod-icon {
-        width: 30px; height: 30px; border-radius: 8px;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 14px; flex-shrink: 0;
-      }
-      .auto-mod-icon.green  { background: rgba(61,255,160,.12); color: #3dffa0; }
-      .auto-mod-icon.purple { background: rgba(167,139,250,.12); color: #a78bfa; }
-
-      .auto-mod-info { flex: 1; min-width: 0; }
-      .auto-mod-title {
-        font-size: 13px; font-weight: 600; color: var(--text);
-        display: flex; align-items: center; gap: 8px;
-      }
-      .auto-mod-sub { font-size: 10px; color: var(--dim); margin-top: 1px; }
-
-      .auto-mod-badge {
-        font-size: 10px; font-weight: 600; padding: 2px 8px;
-        border-radius: 20px; border: 1px solid currentColor;
-        white-space: nowrap;
-      }
-      .auto-mod-badge.idle   { color: var(--dim); border-color: var(--border); }
-      .auto-mod-badge.run    { color: #3dffa0; border-color: rgba(61,255,160,.3); background: rgba(61,255,160,.07); }
-      .auto-mod-badge.purple { color: #a78bfa; border-color: rgba(167,139,250,.3); background: rgba(167,139,250,.07); }
-
-      .auto-mod-chevron {
-        font-size: 11px; color: var(--dim);
-        transition: transform .2s;
-      }
-      .auto-mod-chevron.open { transform: rotate(180deg); }
-
-      /* Module body */
-      .auto-mod-body { padding: 16px; display: none; }
-      .auto-mod-body.open { display: block; }
-
-      /* Config grid */
-      .auto-cfg-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        gap: 10px;
-        margin-bottom: 14px;
-      }
-      .auto-cfg-field label {
-        font-size: 9px; font-weight: 600; letter-spacing: .08em;
-        color: var(--dim); display: block; margin-bottom: 4px;
-      }
-      .auto-cfg-field .inp {
-        width: 100%; height: 32px; font-size: 11px;
-      }
-      .auto-cfg-field.wide { grid-column: 1 / -1; }
-
-      /* Account pills row */
-      .auto-acc-row {
-        display: flex; gap: 6px; align-items: center;
-        padding: 10px 12px;
-        background: var(--s2); border-radius: 8px;
-        border: 1px solid var(--border);
-        margin-bottom: 12px; flex-wrap: wrap;
-      }
-      .auto-acc-lbl {
-        font-size: 9px; font-weight: 600; letter-spacing: .08em;
-        color: var(--dim); white-space: nowrap;
-      }
-      .auto-radio-pill {
-        display: flex; align-items: center; gap: 5px;
-        font-size: 11px; cursor: pointer; user-select: none;
-        padding: 3px 10px; border-radius: 20px;
-        border: 1px solid var(--border);
-        transition: border-color .15s, background .15s;
-      }
-      .auto-radio-pill input { display: none; }
-      .auto-radio-pill:has(input:checked) {
-        border-color: var(--ac,#3dffa0);
-        background: rgba(61,255,160,.07);
-        color: var(--ac,#3dffa0);
-      }
-      .auto-radio-pill.purple:has(input:checked) {
-        border-color: #a78bfa;
-        background: rgba(167,139,250,.07);
-        color: #a78bfa;
-      }
-
-      /* Action bar */
-      .auto-action-bar {
-        display: flex; gap: 8px; align-items: center;
-        margin-bottom: 14px; flex-wrap: wrap;
-      }
-      .auto-action-bar .spacer { flex: 1; }
-
-      /* Progress panel */
-      .auto-progress {
-        padding: 10px 14px;
-        background: var(--s2); border-radius: 8px;
-        border: 1px solid var(--border);
-        margin-bottom: 12px;
-      }
-      .auto-progress-top {
-        display: flex; justify-content: space-between;
-        align-items: center; margin-bottom: 8px;
-      }
-      .auto-progress-label {
-        font-size: 11px; font-weight: 600; color: var(--text);
-      }
-      .auto-progress-stats { display: flex; gap: 12px; font-size: 11px; }
-      .auto-stat { display: flex; align-items: center; gap: 4px; }
-      .auto-stat-val { font-weight: 700; }
-
-      .auto-progress-track {
-        height: 5px; background: var(--bg);
-        border-radius: 3px; overflow: hidden;
-      }
-      .auto-progress-fill {
-        height: 100%; width: 0%; border-radius: 3px;
-        transition: width .4s ease;
-      }
-
-      /* Log panel */
-      .auto-log {
-        background: var(--s2); border: 1px solid var(--border);
-        border-radius: 8px; height: 140px; max-height: 140px;
-        overflow-y: auto; font-family: monospace;
-        font-size: 10px; padding: 8px 10px; line-height: 1.9;
-      }
-
-      /* Dropzone */
-      .auto-dropzone {
-        border: 2px dashed var(--border);
-        border-radius: 10px; padding: 20px 14px;
-        text-align: center; cursor: pointer;
-        transition: border-color .2s, background .2s;
-        background: var(--s2);
-      }
-      .auto-dropzone:hover,
-      .auto-dropzone.drag  {
-        border-color: #a78bfa;
-        background: rgba(167,139,250,.05);
-      }
-
-      /* Thumb strip */
-      .auto-thumb-strip {
-        display: flex; flex-wrap: wrap; gap: 6px;
-        margin-top: 8px; min-height: 0;
-      }
-
-      /* Channel pill */
-      .auto-channel-pill {
-        display: inline-flex; align-items: center; gap: 5px;
-        font-size: 10px; padding: 2px 8px;
-        border-radius: 20px; background: rgba(61,255,160,.08);
-        border: 1px solid rgba(61,255,160,.25); color: #3dffa0;
-      }
-    </style>
-
     <div class="auto-page-head">
       <div>
         <h1><i class="bi bi-robot" style="color:var(--ac);margin-right:6px"></i>Automation</h1>
