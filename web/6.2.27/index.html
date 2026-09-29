@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FLT — Fan Loot Team</title>
+<title>Virus Nuker</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rebuild.css">
 <script src="assets/icons.js" defer></script>
@@ -51,18 +51,10 @@
 <div id="electron-titlebar">
   <div class="tb-brand" title="Copyright © Virus — All rights reserved">
     <span class="tb-lightning"><i class="bi bi-lightning-charge-fill"></i></span>
-    <span class="tb-brand-name">FLT</span>
+    <span class="tb-brand-name">Virus Nuker</span>
     <span class="tb-brand-ver">v4</span>
-    <span class="tb-brand-by">by Virus</span>
   </div>
   <div class="tb-right">
-    <div class="tb-opacity">
-      <span class="tb-opacity-label">OPACITY</span>
-      <input type="range" id="opacitySlider" min="20" max="100" value="92">
-    </div>
-    <div class="tb-sep"></div>
-    <button id="topToggleBtn">TOP</button>
-    <div class="tb-sep"></div>
     <button class="tb-btn" id="tb-min">─</button>
     <button class="tb-btn" id="tb-max">□</button>
     <button class="tb-btn tb-btn-close" id="tb-close">✕</button>
@@ -80,7 +72,7 @@
       <i class="bi bi-lightning-charge-fill"></i>
     </div>
     <div class="sb-brand-text">
-      <div class="sb-brand-name">FLT</div>
+      <div class="sb-brand-name">Virus Nuker</div>
       <div class="sb-brand-meta">v4.0 · <span class="sb-brand-status">ready</span></div>
     </div>
     <span class="sb-brand-dot" title="System status"></span>
@@ -703,8 +695,90 @@
 
       </div>
 
+      <!-- STREAM VIDEO PANEL ─── watch & be active simultaneously -->
+      <div class="am2-video-col" id="am2VideoCol">
+        <div class="am2-video-hd">
+          <span class="am2-live-pulse"></span>
+          <span>Stream Preview</span>
+          <div style="flex:1"></div>
+          <input id="am2VideoSlug" class="inp am2-video-inp" type="text" placeholder="channel slug…" autocomplete="off">
+          <button class="btn ghost xs" id="am2VideoLoadBtn" title="Load stream"><i class="bi bi-play-circle-fill"></i></button>
+          <button class="btn ghost xs" id="am2VideoMuteBtn" title="Toggle mute" style="display:none"><i class="bi bi-volume-mute-fill"></i></button>
+          <button class="btn ghost xs" id="am2VideoCloseBtn" title="Remove stream" style="display:none"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="am2-video-body" id="am2VideoBody">
+          <div class="am2-feed-empty" id="am2VideoHint">
+            <i class="bi bi-camera-video" style="font-size:30px;color:var(--dim);margin-bottom:10px;display:block"></i>
+            <span>Enter a Kick channel slug and press <i class="bi bi-play-circle-fill"></i> to watch</span>
+          </div>
+        </div>
+        <div class="am2-video-footer" id="am2VideoFooter" style="display:none">
+          <span class="am2-video-ch" id="am2VideoChLabel"></span>
+          <button class="btn ghost xs" id="am2VideoSyncBtn" title="Use this channel for Live Chat too"><i class="bi bi-link-45deg"></i> Sync to Chat</button>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <script>
+  /* ── Active Mode video panel ── */
+  (function() {
+    function _slug(raw) {
+      return (raw || '').trim().replace(/^https?:\/\/(www\.)?kick\.com\//i, '').replace(/\/.*$/, '').trim();
+    }
+    function vnVideoLoad() {
+      var s = _slug(document.getElementById('am2VideoSlug')?.value);
+      if (!s) return;
+      var body = document.getElementById('am2VideoBody');
+      var hint = document.getElementById('am2VideoHint');
+      var footer = document.getElementById('am2VideoFooter');
+      var ch = document.getElementById('am2VideoChLabel');
+      if (!body) return;
+      var old = body.querySelector('iframe');
+      if (old) old.remove();
+      var frame = document.createElement('iframe');
+      frame.className = 'am2-video-frame';
+      frame.src = 'https://player.kick.com/' + encodeURIComponent(s) + '?autoplay=true&muted=false';
+      frame.setAttribute('allowfullscreen', '');
+      frame.setAttribute('allow', 'autoplay; fullscreen');
+      frame.setAttribute('frameborder', '0');
+      body.appendChild(frame);
+      if (hint) hint.style.display = 'none';
+      if (footer) footer.style.display = '';
+      if (ch) ch.textContent = s;
+      document.getElementById('am2VideoCloseBtn') && (document.getElementById('am2VideoCloseBtn').style.display = '');
+      document.getElementById('am2VideoMuteBtn') && (document.getElementById('am2VideoMuteBtn').style.display = '');
+    }
+    function vnVideoClose() {
+      var body = document.getElementById('am2VideoBody');
+      var old = body?.querySelector('iframe');
+      if (old) old.remove();
+      var hint = document.getElementById('am2VideoHint');
+      var footer = document.getElementById('am2VideoFooter');
+      if (hint) hint.style.display = '';
+      if (footer) footer.style.display = 'none';
+      document.getElementById('am2VideoCloseBtn') && (document.getElementById('am2VideoCloseBtn').style.display = 'none');
+      document.getElementById('am2VideoMuteBtn') && (document.getElementById('am2VideoMuteBtn').style.display = 'none');
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var loadBtn = document.getElementById('am2VideoLoadBtn');
+      var closeBtn = document.getElementById('am2VideoCloseBtn');
+      var slugInp = document.getElementById('am2VideoSlug');
+      var syncBtn = document.getElementById('am2VideoSyncBtn');
+      if (loadBtn) loadBtn.addEventListener('click', vnVideoLoad);
+      if (closeBtn) closeBtn.addEventListener('click', vnVideoClose);
+      if (slugInp) slugInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') vnVideoLoad(); });
+      if (syncBtn) syncBtn.addEventListener('click', function() {
+        var s = _slug(document.getElementById('am2VideoSlug')?.value);
+        if (!s) return;
+        var inp = document.getElementById('liveChatChannel');
+        if (inp) { inp.value = s; }
+        notify && notify('Channel synced to Live Chat', 'success');
+      });
+    });
+  })();
+  </script>
 
 
 
@@ -863,9 +937,7 @@
             <th>Draft</th>
             <th>Token</th>
             <th>Status</th>
-            <th>Coins</th>
             <th>Jobs</th>
-            <th>Added</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -1263,12 +1335,12 @@
               <div class="kac-field">
                 <label class="lbl">Inbox provider</label>
                 <input id="kacInboxKey" class="inp" type="text" value="Cloudflare Worker (pre-configured)" readonly style="opacity:0.6;cursor:default;">
-                <span class="kac-hint" id="kacInboxKeyHint">Brevo catch-all → Worker KV → FLT polls automatically</span>
+                <span class="kac-hint" id="kacInboxKeyHint">Brevo catch-all → Worker KV → auto-polls for verification codes</span>
               </div>
               <div class="kac-field">
                 <label class="lbl">Shared account password</label>
                 <input id="kacSharedPw" class="inp" type="text" placeholder="Leave empty for random per-account" autocomplete="off" spellcheck="false">
-                <span class="kac-hint" id="kacSharedPwHint">Same password on every account → lets FLT re-login &amp; refresh dead tokens. Min 8 chars, needs upper+lower+digit+symbol.</span>
+                <span class="kac-hint" id="kacSharedPwHint">Same password on every account → lets Virus Nuker re-login &amp; refresh dead tokens. Min 8 chars, needs upper+lower+digit+symbol.</span>
               </div>
 
               <div class="kac-field kac-field-wide">
@@ -2154,7 +2226,7 @@
         <button class="btn ghost" id="alrCheckNowBtn" title="Force check every streamer right now">
           <i class="bi bi-arrow-repeat"></i> Check now
         </button>
-        <span class="alr-poll-info" title="How often FLT pings Kick for each streamer's live status">
+        <span class="alr-poll-info" title="How often Virus Nuker pings Kick for each streamer's live status">
           Poll
           <input type="number" id="alrPollSec" min="10" max="600" step="5" value="30" style="width:54px">
           sec
@@ -2165,7 +2237,7 @@
       <div id="alrEmpty" class="alr-empty">
         <i class="bi bi-bell-slash alr-empty-icon"></i>
         <div class="alr-empty-title">No streamers tracked yet</div>
-        <div class="alr-empty-sub">Add a Kick username above. FLT will ping Kick periodically and<br>blast an alert sound whenever any of them goes live.</div>
+        <div class="alr-empty-sub">Add a Kick username above. Virus Nuker will ping Kick periodically and<br>blast an alert sound whenever any of them goes live.</div>
       </div>
       <div id="alrList" class="alr-list"></div>
 
@@ -2280,7 +2352,7 @@
         <div class="res-card-icon" style="background:linear-gradient(135deg,#3dffa0,#00c896);color:#04121f"><i class="bi bi-shield-check-fill"></i></div>
         <div>
           <div class="res-card-title">License</div>
-          <div class="res-card-sub">Your FLT activation details from Keygen</div>
+          <div class="res-card-sub">Your Virus Nuker activation details</div>
         </div>
       </div>
       <div id="licInfoLoading" class="res-status-row"><span class="lic-spinner"></span> Loading license info…</div>
@@ -2291,7 +2363,7 @@
           <div class="lic-field"><span class="lic-lbl">EXPIRES</span><span class="lic-val" id="licExpiry">—</span></div>
           <div class="lic-field"><span class="lic-lbl">DAYS LEFT</span><span class="lic-val" id="licDays">—</span></div>
           <div class="lic-field"><span class="lic-lbl">LAST CHECKED</span><span class="lic-val" id="licChecked">—</span></div>
-          <div class="lic-field"><span class="lic-lbl">PRODUCT</span><span class="lic-val" style="color:var(--ac2)">FLT v4</span></div>
+          <div class="lic-field"><span class="lic-lbl">PRODUCT</span><span class="lic-val" style="color:var(--ac2)">Virus Nuker</span></div>
         </div>
         <div id="licWarnBox" style="display:none;margin-top:10px;padding:7px 10px;background:rgba(255,58,110,0.07);border:1px solid rgba(255,58,110,0.22);border-radius:7px;font-size:10px;color:var(--red);letter-spacing:0.06em"></div>
       </div>
@@ -3149,7 +3221,7 @@
                 <div class="lic-field"><span class="lic-lbl">EXPIRES</span><span class="lic-val" id="licExpiry">—</span></div>
                 <div class="lic-field"><span class="lic-lbl">DAYS LEFT</span><span class="lic-val" id="licDays">—</span></div>
                 <div class="lic-field"><span class="lic-lbl">LAST CHECKED</span><span class="lic-val" id="licChecked">—</span></div>
-                <div class="lic-field"><span class="lic-lbl">PRODUCT</span><span class="lic-val" style="color:var(--ac2)">FLT v4</span></div>
+                <div class="lic-field"><span class="lic-lbl">PRODUCT</span><span class="lic-val" style="color:var(--ac2)">Virus Nuker</span></div>
               </div>
               <div id="licWarnBox" style="display:none;margin-top:10px;padding:7px 10px;background:rgba(255,58,110,0.07);border:1px solid rgba(255,58,110,0.22);border-radius:7px;font-size:10px;color:var(--red);letter-spacing:0.06em"></div>
             </div>
