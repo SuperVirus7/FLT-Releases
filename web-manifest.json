@@ -1,10 +1,10 @@
 {
   "webVersion": "6.2.27",
-  "minAppVersion": "6.2.26",
+  "minAppVersion": "1.0.0",
   "files": {
     "index.html": "8263b155def49a30c279579f857270c2b6f7adbb7534919a6b9250b61d8cca7e",
     "style.css": "7c3cac16f571d0bdcf7ba86e5452a183ad4ef5cb4f6382dee682e0866e5d6df5",
-    "script.js": "753dc1199657b000da1128aa86b39a4f3ecc8ddfb6e4b63e3c2e01d684bd7e74",
+    "script.js": "3807637906c64b16d5f0d53a34613c19e9aaf5331c7842ddbe99661efb3a3be5",
     "focus-pages.css": "76b8c9a6b277e9ccabf24f5bca27bd043fc6a7b7342a7a9e1d084cb0c4b2966f",
     "focus-pages.js": "05366f999814ccd6d5855fee0e2abe7159922f7225a004857d2338be82fb5c7b"
   },
