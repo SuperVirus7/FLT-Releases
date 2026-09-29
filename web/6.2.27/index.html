@@ -6,9 +6,11 @@
 <title>Virus Nuker</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="rebuild.css">
+<link rel="stylesheet" href="focus-pages.css">
 <script src="assets/icons.js" defer></script>
 <script src="offline-icons.js" defer></script>
 <script src="workspace.js" defer></script>
+<script src="focus-pages.js" defer></script>
 <style>
 /* ── License info card in Settings ── */
 @keyframes lic-spin { to { transform: rotate(360deg); } }
@@ -416,7 +418,7 @@
               Active Mode
               <span class="am2-running-badge" id="activeBadge" style="display:none">RUNNING</span>
             </div>
-            <div class="am2-subtitle">Live chat · per-account engine</div>
+            <div class="am2-subtitle">Your channel, conversation, and session controls.</div>
           </div>
         </div>
       </div>
@@ -461,6 +463,12 @@
       </div>
     </div>
 
+    <form id="amChannelForm" class="am-channel-setup">
+      <div class="am-channel-field"><label for="amChannelInput">Channel</label><input id="amChannelInput" class="inp" placeholder="Channel name or Kick URL" autocomplete="off" spellcheck="false"></div>
+      <button class="btn primary" id="amChannelConnectBtn" type="submit"><i class="bi bi-plug"></i> Connect channel</button>
+      <span id="amChannelFeedback" role="status">Choose a channel to get started.</span>
+      <button class="btn ghost" id="amPreviewToggle" type="button" aria-expanded="false" aria-controls="am2VideoCol"><i class="bi bi-camera-video"></i> Show preview</button>
+    </form>
     <!-- BODY -->
     <div class="am2-body">
 
@@ -703,7 +711,6 @@
           <div style="flex:1"></div>
           <input id="am2VideoSlug" class="inp am2-video-inp" type="text" placeholder="channel slug…" autocomplete="off">
           <button class="btn ghost xs" id="am2VideoLoadBtn" title="Load stream"><i class="bi bi-play-circle-fill"></i></button>
-          <button class="btn ghost xs" id="am2VideoMuteBtn" title="Toggle mute" style="display:none"><i class="bi bi-volume-mute-fill"></i></button>
           <button class="btn ghost xs" id="am2VideoCloseBtn" title="Remove stream" style="display:none"><i class="bi bi-x-lg"></i></button>
         </div>
         <div class="am2-video-body" id="am2VideoBody">
@@ -714,71 +721,14 @@
         </div>
         <div class="am2-video-footer" id="am2VideoFooter" style="display:none">
           <span class="am2-video-ch" id="am2VideoChLabel"></span>
-          <button class="btn ghost xs" id="am2VideoSyncBtn" title="Use this channel for Live Chat too"><i class="bi bi-link-45deg"></i> Sync to Chat</button>
+          <button class="btn ghost xs" id="am2VideoSyncBtn" title="Copy this preview channel to the channel connection form"><i class="bi bi-link-45deg"></i> Use this channel</button>
         </div>
       </div>
 
     </div>
   </section>
 
-  <script>
-  /* ── Active Mode video panel ── */
-  (function() {
-    function _slug(raw) {
-      return (raw || '').trim().replace(/^https?:\/\/(www\.)?kick\.com\//i, '').replace(/\/.*$/, '').trim();
-    }
-    function vnVideoLoad() {
-      var s = _slug(document.getElementById('am2VideoSlug')?.value);
-      if (!s) return;
-      var body = document.getElementById('am2VideoBody');
-      var hint = document.getElementById('am2VideoHint');
-      var footer = document.getElementById('am2VideoFooter');
-      var ch = document.getElementById('am2VideoChLabel');
-      if (!body) return;
-      var old = body.querySelector('iframe');
-      if (old) old.remove();
-      var frame = document.createElement('iframe');
-      frame.className = 'am2-video-frame';
-      frame.src = 'https://player.kick.com/' + encodeURIComponent(s) + '?autoplay=true&muted=false';
-      frame.setAttribute('allowfullscreen', '');
-      frame.setAttribute('allow', 'autoplay; fullscreen');
-      frame.setAttribute('frameborder', '0');
-      body.appendChild(frame);
-      if (hint) hint.style.display = 'none';
-      if (footer) footer.style.display = '';
-      if (ch) ch.textContent = s;
-      document.getElementById('am2VideoCloseBtn') && (document.getElementById('am2VideoCloseBtn').style.display = '');
-      document.getElementById('am2VideoMuteBtn') && (document.getElementById('am2VideoMuteBtn').style.display = '');
-    }
-    function vnVideoClose() {
-      var body = document.getElementById('am2VideoBody');
-      var old = body?.querySelector('iframe');
-      if (old) old.remove();
-      var hint = document.getElementById('am2VideoHint');
-      var footer = document.getElementById('am2VideoFooter');
-      if (hint) hint.style.display = '';
-      if (footer) footer.style.display = 'none';
-      document.getElementById('am2VideoCloseBtn') && (document.getElementById('am2VideoCloseBtn').style.display = 'none');
-      document.getElementById('am2VideoMuteBtn') && (document.getElementById('am2VideoMuteBtn').style.display = 'none');
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var loadBtn = document.getElementById('am2VideoLoadBtn');
-      var closeBtn = document.getElementById('am2VideoCloseBtn');
-      var slugInp = document.getElementById('am2VideoSlug');
-      var syncBtn = document.getElementById('am2VideoSyncBtn');
-      if (loadBtn) loadBtn.addEventListener('click', vnVideoLoad);
-      if (closeBtn) closeBtn.addEventListener('click', vnVideoClose);
-      if (slugInp) slugInp.addEventListener('keydown', function(e) { if (e.key === 'Enter') vnVideoLoad(); });
-      if (syncBtn) syncBtn.addEventListener('click', function() {
-        var s = _slug(document.getElementById('am2VideoSlug')?.value);
-        if (!s) return;
-        var inp = document.getElementById('liveChatChannel');
-        if (inp) { inp.value = s; }
-        notify && notify('Channel synced to Live Chat', 'success');
-      });
-    });
-  })();
-  </script>
+  <!-- Active Mode presentation and video controls live in focus-pages.js. -->
 
 
 
@@ -841,6 +791,7 @@
         <button class="acc-fil fil active" data-f="all">All <b id="fAll">0</b></button>
         <button class="acc-fil fil" data-f="valid">Valid <b id="fValid">0</b></button>
         <button class="acc-fil fil" data-f="invalid">Invalid <b id="fInvalid">0</b></button>
+        <button class="acc-fil fil" data-f="pending">Pending <b id="fPending">0</b></button>
         <button class="acc-fil fil" data-f="running">Running <b id="fRunning">0</b></button>
       </div>
 
@@ -922,17 +873,18 @@
 
       <!-- Search -->
       <input id="accSearch" class="inp acc-search" type="text"
-             placeholder="&#128269; Search accounts..."
+             placeholder="Search name, email, or draft…" aria-label="Search accounts"
              autocomplete="off">
     </div>
 
 
+    <div class="acc-results-bar"><span id="accResultsCount" role="status">0 accounts</span><button type="button" id="accClearFilters" class="btn ghost xs" hidden>Clear filters</button><span class="acc-results-tip">Select rows to show selection actions.</span></div>
     <!-- TABLE -->
     <div class="acc-table-wrap">
       <table class="acc-tbl">
         <thead>
           <tr>
-            <th class="acc-th-chk"><input type="checkbox" id="chkAll" class="chk" title="Check/uncheck all"></th>
+            <th class="acc-th-chk"><input type="checkbox" id="chkAll" class="chk" title="Select visible accounts" aria-label="Select visible accounts"></th>
             <th>Account</th>
             <th>Draft</th>
             <th>Token</th>
@@ -945,8 +897,8 @@
       </table>
       <div id="accEmpty" class="acc-empty" style="display:none">
         <i class="bi bi-people acc-empty-icon"></i>
-        <div class="acc-empty-title">No accounts yet</div>
-        <div class="acc-empty-sub">Click <b>Add Account</b> to get started</div>
+        <div class="acc-empty-title" id="accEmptyTitle">No accounts yet</div>
+        <div class="acc-empty-sub" id="accEmptyDescription">Add your first account to get started.</div>
       </div>
     </div>
 
