@@ -1,12 +1,27 @@
 {
-  "webVersion": "6.2.29",
+  "schemaVersion": 2,
+  "webVersion": "6.2.30",
   "minAppVersion": "1.0.0",
+  "maxAppVersion": "1.0.0",
   "files": {
-    "index.html": "b7295f29f5fd6bb9d2222f4b91ab14aa1ed30a05c572e42bbccb903621583f24",
+    "assets/icons.js": "eb3a97364faba221da59792131e289aba727ded2809376eb4a6539d500e89896",
+    "assets/inter-latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+    "assets/INTER-LICENSE": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345",
+    "assets/LUCIDE-LICENSE": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "ext_files/icon.ico": "6b2d2da8930fc3a792148d0a9bdb5146fbf1c670444a9df479bf2be7e09f51f9",
+    "ext_files/icon.png": "7de26de8c6e138e69f37aef9af9de9f25f55f1993567fc797645964170cd0862",
+    "focus-pages.css": "40b7df95d50c3e54fe43c74faf7b7dc8647062bdd9018fa8d45f1182efa8e1ef",
+    "focus-pages.js": "228917c7418af82aaee91fedd538c67edf42fb52ae56a7908f03ddf40fa97cd1",
+    "icon.ico": "6b2d2da8930fc3a792148d0a9bdb5146fbf1c670444a9df479bf2be7e09f51f9",
+    "icon.png": "7de26de8c6e138e69f37aef9af9de9f25f55f1993567fc797645964170cd0862",
+    "index.html": "71061e99b6beb01523d350d80962a245fa5df30f148328623e824de3bf424c0f",
+    "license-theme.css": "59ad02603a20ace872d77a5f849a27b77c72d42635047014d907915aff9bc78d",
+    "license.html": "43ff81c4d62851af765fa03b01ae581106666ce5c6ca69d42dd15991d9f73ace",
+    "offline-icons.js": "33a21a57c28dbae756da515a5927d9e77846f7dc1ca15eea3a07a32b662fe353",
+    "rebuild.css": "9a5adb497db350b3a96e43cd6d12691cc0ff9d7ad6e42a75eba19419967d7a60",
+    "script.js": "4d3968470da8ba669187492f49092a187e1259a098c4f5fa6b419320a2fda842",
     "style.css": "7c3cac16f571d0bdcf7ba86e5452a183ad4ef5cb4f6382dee682e0866e5d6df5",
-    "script.js": "fdd4f109b15305ee21c4ca8f447af176964334e99aecc0875c353bf8aa19265c",
-    "focus-pages.css": "76b8c9a6b277e9ccabf24f5bca27bd043fc6a7b7342a7a9e1d084cb0c4b2966f",
-    "focus-pages.js": "05366f999814ccd6d5855fee0e2abe7159922f7225a004857d2338be82fb5c7b"
+    "workspace.js": "97952fb56a9676976aa4cbc39e3d1fa1a00ca3beb5706c44256ca3b11c79ddb6"
   },
-  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/6.2.29/"
+  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/6.2.30/"
 }
