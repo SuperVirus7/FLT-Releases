@@ -1,0 +1,121 @@
+/* Focused workspace layouts. Geometry repairs precede the older design layers. */
+@layer focus {
+  #liveChatFeed, #page-accounts .acc-table-wrap { scroll-behavior: auto !important; }
+  #page-activemode, #page-accounts { min-width: 0 !important; }
+  #page-activemode .am2-topbar { display: flex !important; align-items: flex-start !important; justify-content: space-between !important; padding-bottom: 22px !important; gap: 18px !important; }
+  #page-activemode .am2-topbar-right { display: flex !important; flex-wrap: wrap !important; gap: 12px !important; align-items: center !important; }
+  #page-activemode .am2-stat-bar { background: transparent !important; border: 0 !important; gap: 12px !important; padding: 0 !important; }
+  #page-activemode .am2-stat { min-width: 42px !important; }
+  #page-activemode .am2-stat-num { font: 650 19px var(--font-ui) !important; }
+  #page-activemode .am2-stat-lbl { font: 500 10px var(--font-ui) !important; letter-spacing: 0 !important; margin-top: 5px !important; }
+  #page-activemode .am2-last-pill { display: none !important; }
+  #page-activemode .am2-body { display: grid !important; grid-template-columns: 310px minmax(0,1fr) !important; gap: 20px !important; padding: 0 !important; height: auto !important; overflow: visible !important; align-items: start !important; }
+  #page-activemode .am2-sidebar { width: auto !important; max-width: none !important; min-width: 0 !important; height: auto !important; overflow: visible !important; padding: 0 !important; border: 0 !important; gap: 16px !important; }
+  #page-activemode .am2-panel { margin: 0 !important; border-radius: 12px !important; }
+  #page-activemode .am2-panel-hd { padding: 14px 16px !important; }
+  #page-activemode .am2-panel-body { display: block !important; padding: 16px !important; }
+  #page-activemode .am2-panel-title { font: 600 13px var(--font-ui) !important; }
+  #page-activemode .am2-panel-sub { font-size: 11px !important; margin-top: 3px !important; }
+  #page-activemode .am2-field { min-width: 0 !important; margin-bottom: 12px !important; }
+  #page-activemode .am2-lbl { display: block !important; color: var(--text2) !important; font-size: 11px !important; letter-spacing: 0 !important; margin-bottom: 6px !important; }
+  #page-activemode .am2-row2 { display: grid !important; grid-template-columns: minmax(0,1fr) 76px !important; gap: 10px !important; }
+  #page-activemode .am2-row3 { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  #page-activemode .am2-tog-field { grid-column: 1/-1 !important; display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: space-between !important; margin: 0 !important; }
+  #page-activemode .am2-inp { width: 100% !important; font-size: 12px !important; }
+  #page-activemode .am2-tog-row { min-height: 40px !important; padding: 9px 10px !important; }
+  #page-activemode .am2-tog-label { font-size: 12px !important; }
+  #page-activemode .am2-chat-col { display: flex !important; flex-direction: column !important; width: 100% !important; max-width: none !important; min-width: 0 !important; height: clamp(460px,66vh,780px) !important; min-height: 0 !important; padding: 0 !important; background: var(--s1) !important; border: 1px solid var(--border) !important; border-radius: 12px !important; overflow: visible !important; }
+  #page-activemode .am2-chat-hd { display: flex !important; flex-wrap: wrap !important; align-items: center !important; gap: 12px !important; padding: 15px 16px !important; min-height: 64px !important; height: auto !important; flex-shrink: 0 !important; background: none !important; }
+  #page-activemode .am2-chat-controls { display: flex !important; flex-wrap: wrap !important; gap: 7px !important; margin-left: auto !important; }
+  #page-activemode .am2-chat-title { font: 600 13px var(--font-ui) !important; }
+  #page-activemode .am2-limit-sel { min-height: 34px !important; padding: 5px !important; }
+  #page-activemode .am2-feed { flex: 1 1 0 !important; height: auto !important; min-height: 160px !important; overflow-y: auto !important; padding: 14px 16px !important; overscroll-behavior: contain !important; }
+  #page-activemode .am2-feed-empty { flex: 1 !important; justify-content: center !important; align-items: center !important; min-height: 140px !important; gap: 12px !important; color: var(--dim) !important; font-size: 12px !important; text-align: center !important; }
+  #page-activemode .am2-feed-empty-icon { width: auto !important; opacity: .7 !important; color: var(--ac) !important; font-size: 32px !important; }
+  #page-activemode .am2-composer { display: grid !important; grid-template-columns: minmax(0,1fr) 38px 42px !important; gap: 8px !important; align-items: center !important; padding: 14px 16px 8px !important; border-top: 1px solid var(--border) !important; flex-shrink: 0 !important; background: none !important; }
+  #page-activemode .lc-acc-switch { grid-column: 1/-1 !important; width: 100% !important; max-width: 300px !important; display: flex !important; gap: 6px !important; }
+  #page-activemode .lc-acc-arrow { width: 32px !important; height: 34px !important; flex: 0 0 32px !important; }
+  #page-activemode .am2-composer-acc { flex: 1 !important; min-width: 0 !important; width: 100% !important; max-width: none !important; font-size: 11px !important; }
+  #page-activemode .am2-composer-input { grid-row: 2 !important; grid-column: 1 !important; width: 100% !important; }
+  #page-activemode .am2-emote-btn { grid-row: 2 !important; grid-column: 2 !important; min-height: 38px !important; }
+  #page-activemode .am2-send-icon-btn { grid-row: 2 !important; grid-column: 3 !important; min-width: 0 !important; min-height: 38px !important; }
+  #page-activemode .am2-composer-foot { flex-wrap: wrap !important; gap: 8px !important; padding: 0 16px 14px !important; margin: 0 !important; flex-shrink: 0 !important; }
+  #page-activemode .lc-emote-picker { bottom: 100% !important; left: 12px !important; right: 12px !important; width: auto !important; max-height: 260px !important; overflow-y: auto !important; z-index: 20 !important; }
+  #page-activemode .am2-video-col { width: 100% !important; min-width: 0 !important; min-height: 0 !important; border-radius: 12px !important; }
+  #page-activemode .am2-video-col:not([hidden]) { display: flex !important; }
+  #page-activemode .am2-video-col[hidden] { display: none !important; }
+  #page-activemode .am2-video-hd { padding: 12px 16px !important; flex-wrap: wrap !important; font-size: 12px !important; }
+  #page-activemode .am2-video-inp { flex: 1 1 140px !important; width: auto !important; min-width: 0 !important; }
+  #page-activemode .am2-video-body { aspect-ratio: 16/9 !important; min-height: 160px !important; flex: none !important; padding: 18px !important; }
+  #page-activemode .am2-video-footer { padding: 10px 16px !important; }
+  #page-activemode .am2-history-log { max-height: 220px !important; overflow: auto !important; font-size: 11px !important; }
+  #page-activemode .am-topic-hd { flex-wrap: wrap !important; letter-spacing: 0 !important; font-size: 11px !important; }
+  #page-activemode .am-topic-grid { max-height: 230px !important; overflow: auto !important; }
+  #page-accounts .acc-topbar { align-items: flex-start !important; }
+  #page-accounts .acc-topbar-right { flex-wrap: wrap !important; gap: 18px !important; }
+  #page-accounts .acc-control-strip { display: flex !important; flex-wrap: wrap !important; gap: 12px !important; padding: 16px !important; overflow: visible !important; }
+  #page-accounts .acc-search { margin: 0 0 0 auto !important; max-width: none !important; flex: 1 1 240px !important; width: auto !important; }
+  #page-accounts .acc-filter-tabs { flex: 0 1 auto !important; }
+  #page-accounts .acc-sel-actions { flex: 1 1 100% !important; order: 3 !important; display: flex !important; flex-wrap: wrap !important; gap: 8px !important; height: auto !important; }
+  #page-accounts .acc-run-group { display: block !important; width: 100% !important; padding: 0 !important; margin: 0 !important; border: 0 !important; }
+  #page-accounts .acc-run-row-primary, #page-accounts .acc-run-row-tools { display: flex !important; justify-content: flex-start !important; align-items: center !important; flex-wrap: wrap !important; gap: 10px !important; padding: 12px 0 0 !important; border: 0 !important; }
+  #page-accounts .acc-tool-group { flex-wrap: wrap !important; }
+  #page-accounts .acc-run-sep-v { display: none !important; }
+  #page-accounts .acc-table-wrap { max-height: 560px !important; min-height: 220px !important; overflow: auto !important; scrollbar-gutter: stable !important; }
+  #page-accounts .acc-tbl { width: 100% !important; min-width: 1060px !important; table-layout: fixed !important; }
+  #page-accounts .acc-tbl thead { position: sticky !important; top: 0 !important; z-index: 2 !important; }
+  #page-accounts .acc-tbl th, #page-accounts .acc-tbl td { display: table-cell !important; padding: 10px 12px !important; vertical-align: middle !important; }
+  #page-accounts .acc-tbl tbody tr:not(.vt-spacer) { height: 80px !important; }
+  #page-accounts .acc-tbl thead tr { height: 44px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(1) { width: 42px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(2) { width: 170px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(3) { width: 170px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(4) { width: 180px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(5) { width: 170px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(6) { width: 88px !important; }
+  #page-accounts .acc-tbl :is(th,td):nth-child(7) { width: 240px !important; }
+  #page-accounts .acc-tbl .vt-spacer, #page-accounts .acc-tbl .vt-spacer td { padding: 0 !important; border: 0 !important; min-height: 0 !important; line-height: 0 !important; }
+  #page-accounts .acc-tbl .vt-spacer td { width: auto !important; }
+  #page-accounts .acc-name, #page-accounts .acc-uid { max-width: 112px !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; }
+  #page-accounts .acc-interval-inp { width: 64px !important; min-width: 64px !important; }
+  #page-accounts .act-btns { display: flex !important; flex-wrap: nowrap !important; gap: 5px !important; }
+  #page-accounts .ic-btn { min-height: 30px !important; padding: 5px 7px !important; font-size: 10px !important; }
+  #page-accounts .acc-empty { border: 0 !important; padding: 44px 20px !important; }
+  #page-accounts .acc-empty-icon { width: auto !important; padding: 0 !important; background: none !important; border: 0 !important; }
+  #page-accounts .acc-empty-sub { max-width: none !important; }
+  @media (max-width: 1180px) {
+    #page-activemode .am2-body { grid-template-columns: 280px minmax(0,1fr) !important; gap: 14px !important; }
+    #page-activemode .am2-topbar-right { width: 100% !important; justify-content: space-between !important; }
+    #page-accounts .acc-topbar-right { width: 100% !important; justify-content: space-between !important; }
+  }
+  @media (max-width: 1000px) {
+    #page-activemode .am2-body { grid-template-columns: minmax(0,1fr) !important; }
+    #page-activemode .am2-sidebar { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; align-items: start !important; }
+    #page-activemode .am2-chat-col { height: 520px !important; }
+  }
+  @media (max-width: 640px) {
+    #page-activemode .am2-sidebar { grid-template-columns: minmax(0,1fr) !important; }
+    #page-activemode .am2-controls { flex-wrap: wrap !important; }
+    #page-accounts .acc-actions { flex-wrap: wrap !important; }
+    #page-accounts .acc-filter-tabs { width: 100% !important; }
+    #page-accounts .acc-tbl { min-width: 1060px !important; }
+  }
+}
+.am-channel-setup { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; background: var(--s1); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.am-channel-field { flex: 1 1 220px; display: grid; gap: 6px; }
+.am-channel-field label { font-size: 11px; font-weight: 600; color: var(--text2); }
+#amChannelFeedback { flex: 1 1 180px; font-size: 11px; color: var(--dim); align-self: center; }
+#amChannelFeedback[data-error='true'] { color: var(--red); }
+.am-workspace { min-width: 0; display: grid; gap: 16px; align-content: start; }
+.am-chat-bottom { display: flex; justify-content: flex-end; padding: 0 16px 8px; }
+#amJumpLatest { font-size: 11px; border: 1px solid var(--bd3); background: var(--ac-dim); color: var(--ac); border-radius: 6px; padding: 6px 10px; }
+.am-history-details { min-width: 0; }
+.am-history-details summary { padding: 14px 16px; cursor: pointer; font-size: 12px; font-weight: 600; }
+.am-history-details > .am2-panel { border: 0 !important; }
+.acc-session-details { order: 4; width: 100%; border-top: 1px solid var(--border); padding-top: 12px; }
+.acc-session-details summary { cursor: pointer; color: var(--text2); font-size: 12px; padding: 3px 0; }
+.acc-session-details summary span { color: var(--dim); font-size: 11px; margin-left: 8px; }
+.acc-results-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: -4px 0 12px; min-height: 34px; font-size: 12px; color: var(--text2); }
+.acc-results-tip { color: var(--dim); font-size: 11px; margin-left: auto; }
+.acc-status-actions { display: flex; align-items: center; gap: 4px; }
+@media (max-width: 640px) { .acc-results-tip { display: none; } .acc-session-details summary span { display: block; margin: 5px 0 0; } }
