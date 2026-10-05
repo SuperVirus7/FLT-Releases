@@ -15,3 +15,6 @@ web-manifest.json -text
 
 web/** -text
 web-manifest.json -text
+
+web/** -text
+web-manifest.json -text
