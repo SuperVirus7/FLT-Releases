@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "webVersion": "6.2.33",
+  "webVersion": "6.2.34",
   "minAppVersion": "1.0.0",
   "maxAppVersion": "1.0.0",
   "files": {
@@ -14,14 +14,14 @@
     "focus-pages.js": "1be45f98c0893d60cab15d9d234ba88d5abd4da6219cad212aea93e0ab3d3e25",
     "icon.ico": "6b2d2da8930fc3a792148d0a9bdb5146fbf1c670444a9df479bf2be7e09f51f9",
     "icon.png": "7de26de8c6e138e69f37aef9af9de9f25f55f1993567fc797645964170cd0862",
-    "index.html": "71061e99b6beb01523d350d80962a245fa5df30f148328623e824de3bf424c0f",
+    "index.html": "6b4a5257191fe6c60fcc3af0d6699e6c5010f0d1643524599f82b5a73b433cc3",
     "license-theme.css": "59ad02603a20ace872d77a5f849a27b77c72d42635047014d907915aff9bc78d",
     "license.html": "43ff81c4d62851af765fa03b01ae581106666ce5c6ca69d42dd15991d9f73ace",
     "offline-icons.js": "33a21a57c28dbae756da515a5927d9e77846f7dc1ca15eea3a07a32b662fe353",
     "rebuild.css": "9a5adb497db350b3a96e43cd6d12691cc0ff9d7ad6e42a75eba19419967d7a60",
-    "script.js": "cfe4295f274b398f8c82ff08c63839dafd5af3917e7b4b02949a0242f332ae64",
+    "script.js": "b6128b77ae8891b0cff6d53af85b66c56af9447500ffb57ade920d61e585afb5",
     "style.css": "7c3cac16f571d0bdcf7ba86e5452a183ad4ef5cb4f6382dee682e0866e5d6df5",
     "workspace.js": "97952fb56a9676976aa4cbc39e3d1fa1a00ca3beb5706c44256ca3b11c79ddb6"
   },
-  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/6.2.33/"
+  "baseUrl": "https://raw.githubusercontent.com/SuperVirus7/FLT-Releases/main/web/6.2.34/"
 }
